@@ -55,3 +55,9 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+const container = document.getElementById("container");
+
+for(let i = 1; i <= posts.length; i++){
+    container.innerHTML = 
+};
