@@ -61,7 +61,7 @@ const container = document.getElementById("container");
 
 
 
-posts.forEach(element => {
+posts.forEach((element, index) => {
     container.innerHTML += `
         <div class="post">
             <div class="post__header">
@@ -96,18 +96,24 @@ posts.forEach(element => {
     `;
     
     // non funziona 
-    let likes;
-    likes = document.querySelector(".likes__cta");
+    // da usare il getElementsbyclassname fuori dal forEach
+    let likesButton= document.querySelector(".like-button");
+    let likeStato = false;
+    // false = dislike e viceversa
 
-    likes.addEventListener('click', function(){
-            likes.classList.add("like-button--liked");
+    likesButton.addEventListener('click', function(){
+        if(likeStato === false){
+            likesButton.classList.add("like-button--liked");
             element.likes++;
-            console.log(element.likes);
-        }
-
-    )
-    });
-    
+            likeStato = true;
+        }else{
+            likesButton.classList.remove("like-button--liked");
+            element.likes--;
+            likeStato = false;
+        };
+        console.log(posts[index]["likes"]);
+    })
+});
     
     
     
